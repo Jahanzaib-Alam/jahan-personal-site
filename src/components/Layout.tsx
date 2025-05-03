@@ -10,7 +10,7 @@ function Layout({ title, children }: LayoutProps) {
 	return (
 		<>
 			<Header title={title} />
-				{children}
+			{children}
 			<Footer />
 		</>
 	);
