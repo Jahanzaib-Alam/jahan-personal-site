@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+@theme {
+	--color-button-blue-light: #4682B4
+	--color-button-blue-dark: #0F4C81
+}
