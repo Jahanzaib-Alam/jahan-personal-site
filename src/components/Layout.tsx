@@ -10,7 +10,9 @@ function Layout({ title, children }: LayoutProps) {
 	return (
 		<>
 			<Header title={title} />
-			<main>{children}</main>
+			<div className="flex-1 bg-gray-200 flex items-center justify-center">
+				{children}
+			</div>
 			<Footer />
 		</>
 	);
