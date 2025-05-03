@@ -6,8 +6,8 @@ function HomePage() {
 	return (
 		<Layout title="Jahanzaib's Website">
 			<PageContent>
-				<Button to="./projects">Projects</Button>
-				<Button to="./resources">Resources</Button>
+				<Button to="projects">Projects</Button>
+				<Button to="resources">Resources</Button>
 			</PageContent>
 		</Layout>
 	);

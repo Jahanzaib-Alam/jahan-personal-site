@@ -2,11 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 interface BackButtonProps {
-	to: string;
+	to?: string;
 	children?: React.ReactNode;
 }
 
-function BackButton({ to, children = 'Back' }: BackButtonProps) {
+function BackButton({ to = '..', children = 'Back' }: BackButtonProps) {
 	return (
 		<div className="justify-center">
 			<Link

@@ -3,12 +3,11 @@ import PageContent from '../components/PageContent';
 import Button from '../components/Button';
 import BackButton from '../components/BackButton';
 
-function ProjectsPage() {
+function ResourcesPage() {
 	return (
-		<Layout title="Projects">
+		<Layout title="Resources">
 			<PageContent>
-				<Button to="https://zenithraptor.itch.io/grapple-pilot">Grapple Pilot</Button>
-				<Button to="https://zenithraptor.itch.io/shadowmaze">Shadow Maze</Button>
+				<Button to="mcr-prayer-times">Manchester Prayer Times</Button>
 			</PageContent>
 			<PageContent>
 				<BackButton />
@@ -17,4 +16,4 @@ function ProjectsPage() {
 	);
 }
 
-export default ProjectsPage;
+export default ResourcesPage;
