@@ -1,14 +1,14 @@
 import Layout from '../components/Layout';
-import PageContent from '../components/PageContent';
+import PageContentButtons from '../components/PageContentButtons';
 import Button from '../components/Button';
 
 function HomePage() {
 	return (
 		<Layout title="Jahanzaib's Website">
-			<PageContent>
+			<PageContentButtons>
 				<Button to="projects">Projects</Button>
 				<Button to="resources">Resources</Button>
-			</PageContent>
+			</PageContentButtons>
 		</Layout>
 	);
 }

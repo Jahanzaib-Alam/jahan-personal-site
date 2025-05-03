@@ -6,10 +6,8 @@ interface PageContentProps {
 
 function PageContent({ children }: PageContentProps) {
 	return (
-		<div className="flex-1 bg-gray-200 flex items-center justify-center">
-			<div className="flex flex-wrap justify-center gap-4">
-				{children}
-			</div>
+		<div className="flex-1 bg-gray-200 flex flex-col items-center justify-center pb-20">
+			{children}
 		</div>
 	);
 }
