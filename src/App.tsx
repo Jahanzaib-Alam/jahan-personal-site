@@ -6,12 +6,14 @@ import PrayerTimesPage from './pages/PrayerTimesPage';
 import JamiaPrayerTimesPage from './pages/JamiaPrayerTimesPage';
 import { Routes, Route } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
+import RandomStatsPage from './pages/RandomStatsPage';
 
 function App() {
 	return (
 		<div className="min-h-screen flex flex-col">
 			<Routes>
 				<Route index element={<HomePage />} />
+				<Route path="random-stats" element={<RandomStatsPage />} />
 				<Route path="projects" element={<ProjectsPage />} />
 
 				<Route path="resources" element={<Outlet />}>

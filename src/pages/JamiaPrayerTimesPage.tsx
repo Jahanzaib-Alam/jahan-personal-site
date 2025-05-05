@@ -3,14 +3,13 @@ import PageContent from '../components/PageContent';
 import ButtonList from '../components/ButtonList';
 import ResourceButton from '../components/ResourceButton';
 import BackButton from '../components/BackButton';
+import PageHeading from '../components/PageHeading';
 
 function JamiaPrayerTimesPage() {
 	return (
 		<Layout title="Jamia Rasooliah Prayer Times">
 			<PageContent>
-				<div className="w-full flex justify-center bg-gradient-to-r from-[#4682B4] to-[#0F4C81] mb-16 py-4 text-l font-bold text-white text-center">
-					ظُهْر is at 1pm in Winter and 2pm in Summer and فجر is not later than 7am during Winter
-				</div>
+				<PageHeading>ظُهْر is at 1pm in Winter and 2pm in Summer and فجر is not later than 7am during Winter</PageHeading>
 				<ButtonList>
 					<ResourceButton to="/jamia-rasooliah-prayer-times/01 - January.JPG">January</ResourceButton>
 					<ResourceButton to="/jamia-rasooliah-prayer-times/02 - February.JPG">February</ResourceButton>

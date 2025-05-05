@@ -6,6 +6,7 @@ function HomePage() {
 	return (
 		<Layout title="Jahanzaib's Website">
 			<PageContentButtons>
+				<Button to="random-stats">Random Stats</Button>
 				<Button to="projects">Projects</Button>
 				<Button to="resources">Resources</Button>
 			</PageContentButtons>
