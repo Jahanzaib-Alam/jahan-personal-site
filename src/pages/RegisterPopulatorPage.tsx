@@ -20,6 +20,7 @@ interface FormData {
 	absenceFormSpreadsheetId: string;
 	absenceFormSheetName: string;
 	absenceYearGroup: number | string;
+	friendCode: string;
 	checkZoom: boolean;
 }
 
@@ -31,6 +32,7 @@ const initialFormState: FormData = {
 	absenceFormSpreadsheetId: '',
 	absenceFormSheetName: '',
 	absenceYearGroup: 1,
+	friendCode: '',
 	checkZoom: false,
 };
 
@@ -213,6 +215,15 @@ function RegisterPopulatorPage() {
 						value={form.absenceYearGroup}
 						onChange={handleChange}
 						label="Absence Year Group"
+						variant="outlined"
+						fullWidth
+						required
+					/>
+					<TextField
+						name="friendCode"
+						value={form.friendCode}
+						onChange={handleChange}
+						label="Friend Code"
 						variant="outlined"
 						fullWidth
 						required
