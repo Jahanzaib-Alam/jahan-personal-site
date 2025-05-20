@@ -101,9 +101,7 @@ function RegisterPopulatorPage() {
 				const errorResult = await response.json().catch(() => ({ message: 'An unknown error occurred.' }));
 				throw new Error(`HTTP error ${response.status}: ${errorResult.message || 'Failed to submit data'}`);
 			}
-
-			const result = await response.json();
-			setSubmissionStatus({ type: 'success', message: `Submitted successfully! Response: ${JSON.stringify(result)}` });
+			setSubmissionStatus({ type: 'success', message: `Google Sheets Register populated successfully!` });
 		} catch (err) {
 			console.error('Error submitting form:', err);
 			setSubmissionStatus({ type: 'error', message: `Error submitting form: Please contact Sa'ad for assistance` });
