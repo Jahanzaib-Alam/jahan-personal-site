@@ -53,7 +53,7 @@ const JamiaCurrentPrayerTimesPage = () => {
     return <>Loading...</>;
   }
 
-  const handleTabChange = (event: React.SyntheticEvent, newValue: string) => {
+  const handleTabChange = (_event: React.SyntheticEvent, newValue: string) => {
     setTabValue(newValue);
   };
 
