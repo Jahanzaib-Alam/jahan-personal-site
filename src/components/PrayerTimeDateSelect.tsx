@@ -18,21 +18,25 @@ const PrayerTimeDateSelect = ({ defaultTimes }: PrayerTimeDateSelectProps) => {
   const [date, setDate] = useState<PickerValue>(dayjs());
   const [loading, setLoading] = useState(false);
 
-  const handleDateChange = (newValue: PickerValue) => {
+  const handleDateChange = async (newValue: PickerValue) => {
     setDate(newValue);
     setLoading(true);
-    const apiUrl = import.meta.env.VITE_API_URL;
-    fetch(`${apiUrl}/prayer-times/${newValue?.format("YYYY-MM-DD")}`)
-      .then((response) => response.json())
-      .then((data) => {
+
+    try {
+      const apiUrl = import.meta.env.VITE_API_URL;
+      const response = await fetch(
+        `${apiUrl}/prayer-times/${newValue?.format("YYYY-MM-DD")}`
+      );
+      if (response.ok) {
+        const data = await response.json();
         setTimes(data);
-      })
-      .catch((error) => {
-        console.error("Error fetching prayer times:", error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+      }
+    } catch (error) {
+      console.error("Error fetching prayer times:", error);
+      setTimes(undefined);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
