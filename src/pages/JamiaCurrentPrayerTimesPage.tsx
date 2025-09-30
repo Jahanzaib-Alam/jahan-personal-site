@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import PrayerTimeTable from "../components/PrayerTimeTable";
 import PrayerTimeDateSelect from "../components/PrayerTimeDateSelect";
 import Button from "../components/Button";
+import { LoadingMessage } from "../components/LoadingMessage";
 
 export interface PrayerTimes {
   date: string;
@@ -49,10 +50,6 @@ const JamiaCurrentPrayerTimesPage = () => {
       });
   }, []);
 
-  if (loading) {
-    return <>Loading...</>;
-  }
-
   const handleTabChange = (_event: React.SyntheticEvent, newValue: string) => {
     setTabValue(newValue);
   };
@@ -60,26 +57,30 @@ const JamiaCurrentPrayerTimesPage = () => {
   return (
     <Layout title="Jamia Rasooliah Prayer Times">
       <PageContent>
-        <TabContext value={tabValue}>
-          <TabList
-            onChange={handleTabChange}
-            aria-label="Prayer Times Tabs"
-            sx={{ paddingTop: "20px" }}
-          >
-            <Tab label="Today" value="today" />
-            <Tab label="Tomorrow" value="tomorrow" />
-            <Tab label="Select Date" value="selectDate" />
-          </TabList>
-          <TabPanel value="today">
-            <PrayerTimeTable times={currentTimes?.today} />
-          </TabPanel>
-          <TabPanel value="tomorrow">
-            <PrayerTimeTable times={currentTimes?.tomorrow} />
-          </TabPanel>
-          <TabPanel value="selectDate">
-            <PrayerTimeDateSelect defaultTimes={currentTimes?.today} />
-          </TabPanel>
-        </TabContext>
+        {loading ? (
+          <LoadingMessage />
+        ) : (
+          <TabContext value={tabValue}>
+            <TabList
+              onChange={handleTabChange}
+              aria-label="Prayer Times Tabs"
+              sx={{ paddingTop: "20px" }}
+            >
+              <Tab label="Today" value="today" />
+              <Tab label="Tomorrow" value="tomorrow" />
+              <Tab label="Select Date" value="selectDate" />
+            </TabList>
+            <TabPanel value="today">
+              <PrayerTimeTable times={currentTimes?.today} />
+            </TabPanel>
+            <TabPanel value="tomorrow">
+              <PrayerTimeTable times={currentTimes?.tomorrow} />
+            </TabPanel>
+            <TabPanel value="selectDate">
+              <PrayerTimeDateSelect defaultTimes={currentTimes?.today} />
+            </TabPanel>
+          </TabContext>
+        )}
       </PageContent>
       <PageContent>
         <Button to="downloads">Download Timetables</Button>

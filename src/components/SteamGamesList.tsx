@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import PageHeading from "./PageHeading";
+import { LoadingMessage } from "./LoadingMessage";
 
 type Game = {
   gameName: string;
@@ -31,14 +32,7 @@ const SteamGamesList = () => {
       <PageHeading>Recently Played Games</PageHeading>
       <div className="p-8">
         {loading ? (
-          <>
-            <div className="flex justify-center items-center h-32">
-              <div className="w-8 h-8 border-4 border-blue-500 border-t-transparent border-solid rounded-full animate-spin"></div>
-            </div>
-            <div className="flex justify-center items-center text-center h-32">
-              The server was sleeping. Please wait while it wakes up.
-            </div>
-          </>
+          <LoadingMessage />
         ) : games && games.length > 0 ? (
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {games.map((game, index) => (
