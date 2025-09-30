@@ -8,6 +8,7 @@ import RegisterPopulatorPage from './pages/RegisterPopulatorPage';
 import { Routes, Route } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 import RandomStatsPage from './pages/RandomStatsPage';
+import JamiaCurrentPrayerTimesPage from './pages/JamiaCurrentPrayerTimesPage';
 
 function App() {
 	return (
@@ -17,6 +18,10 @@ function App() {
 				<Route path="random-stats" element={<RandomStatsPage />} />
 				<Route path="projects" element={<ProjectsPage />} />
 				<Route path="register-populator" element={<RegisterPopulatorPage />} />
+				<Route path="jrt" element={<Outlet />}>
+					<Route index element={<JamiaCurrentPrayerTimesPage />} />
+					<Route path="downloads" element={<JamiaPrayerTimesPage />} />
+				</Route>
 
 				<Route path="resources" element={<Outlet />}>
 					<Route index element={<ResourcesPage />} />

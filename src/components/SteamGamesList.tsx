@@ -12,7 +12,8 @@ const SteamGamesList = () => {
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
-		fetch('https://jahan.fly.dev/steam/info')
+		const apiUrl = import.meta.env.VITE_API_URL;
+		fetch(`${apiUrl}/steam/info`)
 			.then((response) => response.json())
 			.then((data) => {
 				setGames(data.games);
