@@ -41,7 +41,7 @@ const PrayerTimeTable = ({ times }: PrayerTimeTableProps) => {
           <TableRow>
             <TableCell sx={{ fontWeight: "bold" }}> </TableCell>
             <TableCell sx={{ fontWeight: "bold" }}>Start</TableCell>
-            <TableCell sx={{ fontWeight: "bold" }}>jamat</TableCell>
+            <TableCell sx={{ fontWeight: "bold" }}>Jamat</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
