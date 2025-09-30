@@ -22,7 +22,7 @@ interface PrayerTimeRow {
 
 const PrayerTimeTable = ({ times }: PrayerTimeTableProps) => {
   if (!times) {
-    return <Box sx={{ textAlign: "center" }}>No times found</Box>;
+    return <Box sx={{ textAlign: "center" }}>Error getting prayer times</Box>;
   }
 
   const rows: PrayerTimeRow[] = [
