@@ -28,7 +28,10 @@ function App() {
 
           <Route path="mcr-prayer-times" element={<Outlet />}>
             <Route index element={<PrayerTimesPage />} />
-            <Route path="jamia" element={<JamiaPrayerTimesPage />} />
+            <Route path="jamia" element={<Outlet />}>
+              <Route index element={<JamiaCurrentPrayerTimesPage />} />
+              <Route path="downloads" element={<JamiaPrayerTimesPage />} />
+            </Route>
           </Route>
         </Route>
       </Routes>

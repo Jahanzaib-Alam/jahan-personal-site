@@ -9,6 +9,9 @@ import PrayerTimeTable from "../components/PrayerTimeTable";
 import PrayerTimeDateSelect from "../components/PrayerTimeDateSelect";
 import Button from "../components/Button";
 import { LoadingMessage } from "../components/LoadingMessage";
+import { useLocation } from "react-router-dom";
+import BackButton from "../components/BackButton";
+import PageContentButtons from "../components/PageContentButtons";
 
 export interface PrayerTimes {
   date: string;
@@ -34,6 +37,7 @@ const JamiaCurrentPrayerTimesPage = () => {
   const [currentTimes, setCurrentTimes] = useState<CurrentPrayerTimes>();
   const [loading, setLoading] = useState(true);
   const [tabValue, setTabValue] = useState("today");
+  const location = useLocation();
 
   useEffect(() => {
     const apiUrl = import.meta.env.VITE_API_URL;
@@ -82,8 +86,11 @@ const JamiaCurrentPrayerTimesPage = () => {
           </TabContext>
         )}
       </PageContent>
-      <PageContent>
+      <PageContentButtons>
         <Button to="downloads">Download Timetables</Button>
+      </PageContentButtons>
+      <PageContent>
+        {location.pathname.includes("resources") && <BackButton />}
       </PageContent>
     </Layout>
   );
