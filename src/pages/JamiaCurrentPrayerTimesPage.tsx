@@ -12,6 +12,7 @@ import { LoadingMessage } from "../components/LoadingMessage";
 import { useLocation } from "react-router-dom";
 import BackButton from "../components/BackButton";
 import PageContentButtons from "../components/PageContentButtons";
+import { NextPrayerInfo } from "../components/NextPrayerInfo";
 
 export interface PrayerTimes {
   date: string;
@@ -31,6 +32,8 @@ export interface PrayerTimes {
 interface CurrentPrayerTimes {
   today: PrayerTimes;
   tomorrow: PrayerTimes;
+  nextStart: string;
+  nextJamat: string;
 }
 
 const JamiaCurrentPrayerTimesPage = () => {
@@ -75,6 +78,7 @@ const JamiaCurrentPrayerTimesPage = () => {
               <Tab label="Select Date" value="selectDate" />
             </TabList>
             <TabPanel value="today">
+              <NextPrayerInfo nextStart={currentTimes?.nextStart} nextJamat={currentTimes?.nextStart}/>
               <PrayerTimeTable times={currentTimes?.today} />
             </TabPanel>
             <TabPanel value="tomorrow">
