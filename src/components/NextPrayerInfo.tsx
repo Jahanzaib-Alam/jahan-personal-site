@@ -8,6 +8,7 @@ import {
   TableBody,
 } from "@mui/material";
 import dayjs from "dayjs";
+import customParseFormat from "dayjs/plugin/customParseFormat";
 
 interface NextPrayerInfoProps {
   nextStart?: string;
@@ -18,6 +19,10 @@ export const NextPrayerInfo: React.FC<NextPrayerInfoProps> = ({
   nextStart,
   nextJamat,
 }) => {
+  if (!nextStart || !nextJamat) {
+    return;
+  }
+  dayjs.extend(customParseFormat);
   return (
     <TableContainer
       component={Paper}

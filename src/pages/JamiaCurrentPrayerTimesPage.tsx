@@ -78,7 +78,10 @@ const JamiaCurrentPrayerTimesPage = () => {
               <Tab label="Select Date" value="selectDate" />
             </TabList>
             <TabPanel value="today">
-              <NextPrayerInfo nextStart={currentTimes?.nextStart} nextJamat={currentTimes?.nextJamat}/>
+              <NextPrayerInfo
+                nextStart={currentTimes?.nextStart}
+                nextJamat={currentTimes?.nextJamat}
+              />
               <PrayerTimeTable times={currentTimes?.today} />
             </TabPanel>
             <TabPanel value="tomorrow">

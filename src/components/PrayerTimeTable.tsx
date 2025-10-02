@@ -25,9 +25,9 @@ interface PrayerTimeRow {
 const PrayerTimeTable = ({ times }: PrayerTimeTableProps) => {
   if (!times) {
     return <Box sx={{ textAlign: "center" }}>Error getting prayer times</Box>;
-	}
-	
-	dayjs.extend(customParseFormat);
+  }
+
+  dayjs.extend(customParseFormat);
 
   const rows: PrayerTimeRow[] = [
     { name: "Fajr", start: times.fajrStart, jamat: times.fajrJamat },
