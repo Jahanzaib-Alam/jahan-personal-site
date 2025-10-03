@@ -70,7 +70,7 @@ export const NextPrayerInfo: React.FC<NextPrayerInfoProps> = ({
                 justifyContent: "center",
               }}
             >
-              {nextStart.name} -{" "}
+              {nextStart.name == "Jum'ah" ? "Ẓuhr" : nextStart.name} -{" "}
               {dayjs(nextStart.start, "HH:mm").format("hh:mm")}
             </TableCell>
             <TableCell

@@ -36,7 +36,9 @@ const PrayerTimeTable = ({ times }: PrayerTimeTableProps) => {
         <TableBody>
           {times.prayers.map((row: Prayer, i: number) => (
             <TableRow key={i}>
-              <TableCell>{row.name}</TableCell>
+              <TableCell>
+                {row.name == "Jum'ah" ? "Ẓuhr/Jum'ah" : row.name}
+              </TableCell>
               <TableCell>{dayjs(row.start, "HH:mm").format("hh:mm")}</TableCell>
               <TableCell>
                 {dayjs(row.jamat, "HH:mm").isValid()
