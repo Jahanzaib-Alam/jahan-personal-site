@@ -25,7 +25,7 @@ const PrayerTimeDateSelect = ({ defaultTimes }: PrayerTimeDateSelectProps) => {
     try {
       const apiUrl = import.meta.env.VITE_API_URL;
       const response = await fetch(
-        `${apiUrl}/prayer-times/${newValue?.format("YYYY-MM-DD")}`
+        `${apiUrl}/prayer-times/1/${newValue?.format("YYYY-MM-DD")}`
       );
       if (response.ok) {
         const data = await response.json();

@@ -8,18 +8,12 @@ import {
   TableBody,
   Box,
 } from "@mui/material";
-import { PrayerTimes } from "../pages/JamiaCurrentPrayerTimesPage";
+import { Prayer, PrayerTimes } from "../pages/JamiaCurrentPrayerTimesPage";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 
 interface PrayerTimeTableProps {
   times?: PrayerTimes;
-}
-
-interface PrayerTimeRow {
-  name: string;
-  start: string;
-  jamat: string;
 }
 
 const PrayerTimeTable = ({ times }: PrayerTimeTableProps) => {
@@ -28,15 +22,6 @@ const PrayerTimeTable = ({ times }: PrayerTimeTableProps) => {
   }
 
   dayjs.extend(customParseFormat);
-
-  const rows: PrayerTimeRow[] = [
-    { name: "Fajr", start: times.fajrStart, jamat: times.fajrJamat },
-    { name: "Sunrise", start: times.sunrise, jamat: "-" },
-    { name: "Zuhr", start: times.dhuhrStart, jamat: times.dhuhrJamat },
-    { name: "'Asr", start: times.asrStart, jamat: times.asrJamat },
-    { name: "Maghrib", start: times.maghribStart, jamat: times.maghribJamat },
-    { name: "'Isha", start: times.ishaStart, jamat: times.ishaJamat },
-  ];
 
   return (
     <TableContainer component={Paper} sx={{ maxWidth: 400, margin: "auto" }}>
@@ -49,7 +34,7 @@ const PrayerTimeTable = ({ times }: PrayerTimeTableProps) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row: PrayerTimeRow, i: number) => (
+          {times.prayers.map((row: Prayer, i: number) => (
             <TableRow key={i}>
               <TableCell>{row.name}</TableCell>
               <TableCell>{dayjs(row.start, "HH:mm").format("hh:mm")}</TableCell>

@@ -9,10 +9,11 @@ import {
 } from "@mui/material";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
+import { Prayer } from "../pages/JamiaCurrentPrayerTimesPage";
 
 interface NextPrayerInfoProps {
-  nextStart?: string;
-  nextJamat?: string;
+  nextStart?: Prayer;
+  nextJamat?: Prayer;
 }
 
 export const NextPrayerInfo: React.FC<NextPrayerInfoProps> = ({
@@ -48,7 +49,7 @@ export const NextPrayerInfo: React.FC<NextPrayerInfoProps> = ({
                 justifyContent: "center",
               }}
             >
-              Next Prayer
+              Next Prayer Start
             </TableCell>
             <TableCell
               sx={{
@@ -69,7 +70,8 @@ export const NextPrayerInfo: React.FC<NextPrayerInfoProps> = ({
                 justifyContent: "center",
               }}
             >
-              {dayjs(nextStart, "HH:mm").format("hh:mm")}
+              {nextStart.name} -{" "}
+              {dayjs(nextStart.start, "HH:mm").format("hh:mm")}
             </TableCell>
             <TableCell
               sx={{
@@ -77,7 +79,8 @@ export const NextPrayerInfo: React.FC<NextPrayerInfoProps> = ({
                 justifyContent: "center",
               }}
             >
-              {dayjs(nextJamat, "HH:mm").format("hh:mm")}
+              {nextJamat.name} -{" "}
+              {dayjs(nextJamat.jamat, "HH:mm").format("hh:mm")}
             </TableCell>
           </TableRow>
         </TableBody>

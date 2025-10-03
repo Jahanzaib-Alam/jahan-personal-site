@@ -14,26 +14,22 @@ import BackButton from "../components/BackButton";
 import PageContentButtons from "../components/PageContentButtons";
 import { NextPrayerInfo } from "../components/NextPrayerInfo";
 
+export interface Prayer {
+  name: string;
+  start: string;
+  jamat: string;
+}
+
 export interface PrayerTimes {
   date: string;
-  fajrStart: string;
-  sunrise: string;
-  dhuhrStart: string;
-  asrStart: string;
-  maghribStart: string;
-  ishaStart: string;
-  fajrJamat: string;
-  dhuhrJamat: string;
-  asrJamat: string;
-  maghribJamat: string;
-  ishaJamat: string;
+  prayers: Prayer[];
 }
 
 interface CurrentPrayerTimes {
   today: PrayerTimes;
   tomorrow: PrayerTimes;
-  nextStart: string;
-  nextJamat: string;
+  nextStart: Prayer;
+  nextJamat: Prayer;
 }
 
 const JamiaCurrentPrayerTimesPage = () => {
@@ -44,7 +40,7 @@ const JamiaCurrentPrayerTimesPage = () => {
 
   useEffect(() => {
     const apiUrl = import.meta.env.VITE_API_URL;
-    fetch(`${apiUrl}/prayer-times/current`)
+    fetch(`${apiUrl}/prayer-times/current/1`)
       .then((response) => response.json())
       .then((data) => {
         setCurrentTimes(data);
@@ -67,30 +63,32 @@ const JamiaCurrentPrayerTimesPage = () => {
         {loading ? (
           <LoadingMessage />
         ) : (
-          <TabContext value={tabValue}>
-            <TabList
-              onChange={handleTabChange}
-              aria-label="Prayer Times Tabs"
-              sx={{ paddingTop: "20px" }}
-            >
-              <Tab label="Today" value="today" />
-              <Tab label="Tomorrow" value="tomorrow" />
-              <Tab label="Select Date" value="selectDate" />
-            </TabList>
-            <TabPanel value="today">
-              <NextPrayerInfo
-                nextStart={currentTimes?.nextStart}
-                nextJamat={currentTimes?.nextJamat}
-              />
-              <PrayerTimeTable times={currentTimes?.today} />
-            </TabPanel>
-            <TabPanel value="tomorrow">
-              <PrayerTimeTable times={currentTimes?.tomorrow} />
-            </TabPanel>
-            <TabPanel value="selectDate">
-              <PrayerTimeDateSelect defaultTimes={currentTimes?.today} />
-            </TabPanel>
-          </TabContext>
+          <>
+            <NextPrayerInfo
+              nextStart={currentTimes?.nextStart}
+              nextJamat={currentTimes?.nextJamat}
+            />
+            <TabContext value={tabValue}>
+              <TabList
+                onChange={handleTabChange}
+                aria-label="Prayer Times Tabs"
+                sx={{ paddingTop: "20px" }}
+              >
+                <Tab label="Today" value="today" />
+                <Tab label="Tomorrow" value="tomorrow" />
+                <Tab label="Select Date" value="selectDate" />
+              </TabList>
+              <TabPanel value="today">
+                <PrayerTimeTable times={currentTimes?.today} />
+              </TabPanel>
+              <TabPanel value="tomorrow">
+                <PrayerTimeTable times={currentTimes?.tomorrow} />
+              </TabPanel>
+              <TabPanel value="selectDate">
+                <PrayerTimeDateSelect defaultTimes={currentTimes?.today} />
+              </TabPanel>
+            </TabContext>
+          </>
         )}
       </PageContent>
       <PageContentButtons>
