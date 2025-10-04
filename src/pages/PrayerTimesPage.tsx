@@ -12,6 +12,7 @@ function PrayerTimesPage() {
         <Button to="https://bmhc.org.uk/prayers/">BMHC</Button>
         <Button to="https://www.masjidehidayah.org.uk/">Hidayah</Button>
         <Button to="https://masjidenoor.com/">Noor</Button>
+        <Button to="multi-mosque">Multi Mosque</Button>
       </PageContentButtons>
       <PageContent>
         <BackButton />

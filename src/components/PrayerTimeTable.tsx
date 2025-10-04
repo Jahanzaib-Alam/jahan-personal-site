@@ -8,9 +8,9 @@ import {
   TableBody,
   Box,
 } from "@mui/material";
-import { Prayer, PrayerTimes } from "../pages/JamiaCurrentPrayerTimesPage";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
+import { PrayerTimes, Prayer } from "./MosquePrayerTimes";
 
 interface PrayerTimeTableProps {
   times?: PrayerTimes;

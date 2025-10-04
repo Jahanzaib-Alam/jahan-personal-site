@@ -9,6 +9,7 @@ import { Routes, Route } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import RandomStatsPage from "./pages/RandomStatsPage";
 import JamiaCurrentPrayerTimesPage from "./pages/JamiaCurrentPrayerTimesPage";
+import MultiMosquePrayerTimesPage from "./pages/MultiMosquePrayerTimesPage";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route index element={<JamiaCurrentPrayerTimesPage />} />
           <Route path="downloads" element={<JamiaPrayerTimesPage />} />
         </Route>
+        <Route path="multi-mosque" element={<MultiMosquePrayerTimesPage />} />
 
         <Route path="resources" element={<Outlet />}>
           <Route index element={<ResourcesPage />} />
@@ -32,6 +34,10 @@ function App() {
               <Route index element={<JamiaCurrentPrayerTimesPage />} />
               <Route path="downloads" element={<JamiaPrayerTimesPage />} />
             </Route>
+            <Route
+              path="multi-mosque"
+              element={<MultiMosquePrayerTimesPage />}
+            />
           </Route>
         </Route>
       </Routes>

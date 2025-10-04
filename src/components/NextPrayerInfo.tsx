@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
-import { Prayer } from "../pages/JamiaCurrentPrayerTimesPage";
+import { Prayer } from "./MosquePrayerTimes";
 
 interface NextPrayerInfoProps {
   nextStart?: Prayer;

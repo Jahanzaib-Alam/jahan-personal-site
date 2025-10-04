@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { PrayerTimes } from "../pages/JamiaCurrentPrayerTimesPage";
 import dayjs from "dayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers";
@@ -8,6 +7,7 @@ import { PickerValue } from "@mui/x-date-pickers/internals";
 import PrayerTimeTable from "./PrayerTimeTable";
 import { Box } from "@mui/material";
 import { LoadingSwirly } from "./LoadingSwirly";
+import { PrayerTimes } from "./MosquePrayerTimes";
 
 interface PrayerTimeDateSelectProps {
   defaultTimes?: PrayerTimes;
