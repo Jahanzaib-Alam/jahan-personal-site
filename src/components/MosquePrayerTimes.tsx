@@ -1,5 +1,5 @@
 import { TabContext, TabList, TabPanel } from "@mui/lab";
-import { Tab } from "@mui/material";
+import { Alert, Tab } from "@mui/material";
 import { NextPrayerInfo } from "./NextPrayerInfo";
 import PrayerTimeDateSelect from "./PrayerTimeDateSelect";
 import PrayerTimeTable from "./PrayerTimeTable";
@@ -10,6 +10,7 @@ export interface Prayer {
   name: string;
   start: string;
   jamat: string;
+  jamatChanging: boolean;
 }
 
 export interface PrayerTimes {
@@ -22,6 +23,7 @@ interface CurrentPrayerTimes {
   tomorrow: PrayerTimes;
   nextStart: Prayer;
   nextJamat: Prayer;
+  jamatsChangingTomorrow: boolean;
 }
 
 interface MosquePrayerTimesProps {
@@ -71,10 +73,13 @@ export const MosquePrayerTimes = ({ mosqueId }: MosquePrayerTimesProps) => {
           <Tab label="Select Date" value="selectDate" />
         </TabList>
         <TabPanel value="today">
-          <PrayerTimeTable times={currentTimes?.today} />
+          {currentTimes?.jamatsChangingTomorrow && (
+            <Alert severity="info">Jamat times will change tomorrow</Alert>
+          )}
+          <PrayerTimeTable times={currentTimes?.today} isTodayTimes={true} />
         </TabPanel>
         <TabPanel value="tomorrow">
-          <PrayerTimeTable times={currentTimes?.tomorrow} />
+          <PrayerTimeTable times={currentTimes?.tomorrow} isTomorrowTimes={true} />
         </TabPanel>
         <TabPanel value="selectDate">
           <PrayerTimeDateSelect defaultTimes={currentTimes?.today} />

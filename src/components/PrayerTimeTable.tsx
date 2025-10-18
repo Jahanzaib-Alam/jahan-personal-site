@@ -7,16 +7,25 @@ import {
   TableCell,
   TableBody,
   Box,
+  Tooltip,
+  IconButton,
 } from "@mui/material";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import { PrayerTimes, Prayer } from "./MosquePrayerTimes";
+import InfoOutlineIcon from "@mui/icons-material/InfoOutline";
 
 interface PrayerTimeTableProps {
   times?: PrayerTimes;
+  isTodayTimes?: boolean;
+  isTomorrowTimes?: boolean;
 }
 
-const PrayerTimeTable = ({ times }: PrayerTimeTableProps) => {
+const PrayerTimeTable = ({
+  times,
+  isTodayTimes,
+  isTomorrowTimes,
+}: PrayerTimeTableProps) => {
   if (!times) {
     return <Box sx={{ textAlign: "center" }}>Error getting prayer times</Box>;
   }
@@ -39,11 +48,23 @@ const PrayerTimeTable = ({ times }: PrayerTimeTableProps) => {
               <TableCell>
                 {row.name == "Jum'ah" ? "Ẓuhr/Jum'ah" : row.name}
               </TableCell>
-              <TableCell>{dayjs(row.start, "HH:mm").format("hh:mm")}</TableCell>
-              <TableCell>
-                {dayjs(row.jamat, "HH:mm").isValid()
-                  ? dayjs(row.jamat, "HH:mm").format("hh:mm")
+              <TableCell>{dayjs(row.start).format("hh:mm")}</TableCell>
+              <TableCell
+                sx={{
+                  backgroundColor:
+                    isTomorrowTimes && row.jamatChanging ? "#ddffcc" : "",
+                }}
+              >
+                {dayjs(row.jamat).isValid()
+                  ? dayjs(row.jamat).format("hh:mm")
                   : row.jamat}
+                {isTodayTimes && row.jamatChanging && (
+                  <Tooltip title="This jamat time will change tomorrow">
+                    <IconButton sx={{ paddingTop: "4.5px", paddingRight: 0 }}>
+                      <InfoOutlineIcon fontSize="small" />
+                    </IconButton>
+                  </Tooltip>
+                )}
               </TableCell>
             </TableRow>
           ))}

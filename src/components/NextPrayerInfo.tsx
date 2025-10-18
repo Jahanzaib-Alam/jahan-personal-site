@@ -10,6 +10,7 @@ import {
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import { Prayer } from "./MosquePrayerTimes";
+import { PrayerCountdown } from "./PrayerCountdown";
 
 interface NextPrayerInfoProps {
   nextStart?: Prayer;
@@ -71,7 +72,7 @@ export const NextPrayerInfo: React.FC<NextPrayerInfoProps> = ({
               }}
             >
               {nextStart.name == "Jum'ah" ? "Ẓuhr" : nextStart.name} -{" "}
-              {dayjs(nextStart.start, "HH:mm").format("hh:mm")}
+              {dayjs(nextStart.start).format("hh:mm")}
             </TableCell>
             <TableCell
               sx={{
@@ -79,8 +80,25 @@ export const NextPrayerInfo: React.FC<NextPrayerInfoProps> = ({
                 justifyContent: "center",
               }}
             >
-              {nextJamat.name} -{" "}
-              {dayjs(nextJamat.jamat, "HH:mm").format("hh:mm")}
+              {nextJamat.name} - {dayjs(nextJamat.jamat).format("hh:mm")}
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell
+              sx={{
+                textAlign: "center",
+                justifyContent: "center",
+              }}
+            >
+              <PrayerCountdown time={nextStart.start} />
+            </TableCell>
+            <TableCell
+              sx={{
+                textAlign: "center",
+                justifyContent: "center",
+              }}
+            >
+              <PrayerCountdown time={nextJamat.jamat} />
             </TableCell>
           </TableRow>
         </TableBody>
